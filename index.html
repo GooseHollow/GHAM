@@ -1298,7 +1298,8 @@
 		for (i = 0; i < document.getElementsByClassName('fund_thirty_day_median_bid_ask').length; i++) 
 		{ 
 			mystring = document.getElementsByClassName('fund_thirty_day_median_bid_ask')[i].innerHTML;
-			var mysct2 = mystring * 100;
+			//var mysct2 = mystring * 100;
+			  var mysct2 = mystring.slice(0,4);
 			document.getElementsByClassName('fund_thirty_day_median_bid_ask')[i].innerHTML = mysct2 + '%';
 	    }
 		</script>
