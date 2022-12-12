@@ -28,6 +28,7 @@
 	
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<style>
+		
 		#popup-form-modal {
 			display: none;
 			position: fixed;
@@ -40,6 +41,7 @@
 			border-radius: 5px;
 			z-index: 999;
 		}
+	
 		#popup-form-modal .form-field {
 			padding: 10px;
 		}
@@ -56,8 +58,12 @@
 			display: block;
 			margin: 10px auto;
 		}
+		#popup-form-modal .form-field .cancel-btn {
+			display: block;
+			margin: 10px auto;
+		}
 
-#chat-icon {
+		#chat-icon {
 			position: fixed;
 			bottom: 20px;
 			right: 20px;
@@ -74,9 +80,10 @@
 
 <body class="is-preload">
 
-  <form method="POST" 
-  action="https://script.google.com/macros/s/AKfycbzY4YfilQ9VqTbFbEt1RQIPkMkVGjPcWbrktMsURuCBguOB-KEgWIQx1Z7-PqFV-SlG/exec
-">
+   <form method="POST" action="https://script.google.com/macros/s/AKfycbzY4YfilQ9VqTbFbEt1RQIPkMkVGjPcWbrktMsURuCBguOB-KEgWIQx1Z7-PqFV-SlG/exec">
+
+
+
     <div id="popup-form-modal">
 		<div class="form-field">
 			<h3>Subscribe to Market Commentary</h3>
@@ -87,16 +94,19 @@
 					<a href="/privacy.html" style="vertical-align: baseline; color: blue; text-decoration: underline;">
 						Privacy Policy</a>.</h7></span>
 
-			<input name="Name" type="text" class="form-control" placeholder="Enter your name">
-			<input name="Email Address" type="email" class="form-control" placeholder="Enter your email address">
+			<input name="Name" type="text" class="form-control" placeholder="Your name">
+			<input name="Email Address" type="email" class="form-control" placeholder="Your email address">
 		<label for="type">Investor Type</label>
 
 <select name="Investor Type" id="type">
 	<option value="Professional">Professional Investor</option>
 	<option value="Retail">Retail</option>
  </select>
-			<textarea name="Comments" class="form-control" placeholder="Any other information"></textarea>
+			<textarea name="Comments" class="form-control" placeholder="Tell us about yourselves."></textarea>
+			<div class="row">
+			<input type="button" value="Cancel" class="hide btn-secondary cancel-btn" id="delete"/> 
 			<button class="btn btn-primary submit-btn">Submit</button>
+			</div>
 		</div>
 	</div>
 
@@ -109,9 +119,13 @@
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-		$('#chat-icon').click(function() {
-			$('#popup-form-modal').fadeIn();
-		});
+			$('#chat-icon').click(function() {
+				$('#popup-form-modal').fadeIn();
+			});
+			$("#delete").on("click",function(){
+       			 $("#popup-form-modal").fadeOut();
+    			});
+	
 	</script>
 	<div id="wrapper">
         <header>
