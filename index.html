@@ -25,12 +25,97 @@
 
   gtag('config', 'G-JNTVE8H9ZX');
 </script>
+	
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+		#popup-form-modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 400px;
+			height: 500px;
+			background: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			z-index: 999;
+		}
+		#popup-form-modal .form-field {
+			padding: 10px;
+		}
+		#popup-form-modal .form-field h3 {
+			margin: 0;
+			font-size: 20px;
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 10px;
+		}
+		#popup-form-modal .form-field .form-control {
+			margin: 10px 0;
+		}
+		#popup-form-modal .form-field .submit-btn {
+			display: block;
+			margin: 10px auto;
+		}
 
+#chat-icon {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: gray;
+			color: #fff;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+		}
+	</style>
+	
+	
+	
 </head>
 
 <body class="is-preload">
 
+  <form method="POST" 
+  action="https://script.google.com/macros/s/AKfycbzY4YfilQ9VqTbFbEt1RQIPkMkVGjPcWbrktMsURuCBguOB-KEgWIQx1Z7-PqFV-SlG/exec
+">
+    <div id="popup-form-modal">
+		<div class="form-field">
+			<h3>Subscribe to Market Commentary</h3>
+			<span><h7>
+				<a>Goose Hollow Capital uses this information to keep you up to date on our latest 
+					investment insights. You may unsubscribe from these 
+					communications at any time. For more information, check out our 
+					<a href="/privacy.html" style="vertical-align: baseline; color: blue; text-decoration: underline;">
+						Privacy Policy</a>.</h7></span>
 
+			<input name="Name" type="text" class="form-control" placeholder="Enter your name">
+			<input name="Email Address" type="email" class="form-control" placeholder="Enter your email address">
+		<label for="type">Investor Type</label>
+
+<select name="Investor Type" id="type">
+	<option value="Professional">Professional Investor</option>
+	<option value="Retail">Retail</option>
+ </select>
+			<textarea name="Comments" class="form-control" placeholder="Any other information"></textarea>
+			<button class="btn btn-primary submit-btn">Submit</button>
+		</div>
+	</div>
+
+
+	</form>
+	
+	<div id="chat-icon">
+		<i class="fa fa-comment"></i>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$('#chat-icon').click(function() {
+			$('#popup-form-modal').fadeIn();
+		});
+	</script>
 	<div id="wrapper">
         <header>
 			<section class="top-nav">
