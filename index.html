@@ -28,41 +28,6 @@
 	
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<style>
-		
-		#popup-form-modal {
-			display: none;
-			position: fixed;
-			top: 0;
-			right: 0;
-			width: 400px;
-			height: 500px;
-			background: #fff;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			z-index: 999;
-		}
-	
-		#popup-form-modal .form-field {
-			padding: 10px;
-		}
-		#popup-form-modal .form-field h3 {
-			margin: 0;
-			font-size: 20px;
-			border-bottom: 1px solid #ccc;
-			padding-bottom: 10px;
-		}
-		#popup-form-modal .form-field .form-control {
-			margin: 10px 0;
-		}
-		#popup-form-modal .form-field .submit-btn {
-			display: block;
-			margin: 10px auto;
-		}
-		#popup-form-modal .form-field .cancel-btn {
-			display: block;
-			margin: 10px auto;
-		}
-
 		#chat-icon {
 			position: fixed;
 			bottom: 20px;
@@ -80,53 +45,25 @@
 
 <body class="is-preload">
 
-   <form method="POST" action="https://script.google.com/macros/s/AKfycbzY4YfilQ9VqTbFbEt1RQIPkMkVGjPcWbrktMsURuCBguOB-KEgWIQx1Z7-PqFV-SlG/exec">
-
-
-
-    <div id="popup-form-modal">
-		<div class="form-field">
-			<h3>Subscribe to Market Commentary</h3>
-			<span><h7>
-				<a>Goose Hollow Capital uses this information to keep you up to date on our latest 
-					investment insights. You may unsubscribe from these 
-					communications at any time. For more information, check out our 
-					<a href="/privacy.html" style="vertical-align: baseline; color: blue; text-decoration: underline;">
-						Privacy Policy</a>.</h7></span>
-
-			<input name="Name" type="text" class="form-control" placeholder="Your name">
-			<input name="Email Address" type="email" class="form-control" placeholder="Your email address">
-		<label for="type">Investor Type</label>
-
-<select name="Investor Type" id="type">
-	<option value="Professional">Professional Investor</option>
-	<option value="Retail">Retail</option>
- </select>
-			<textarea name="Comments" class="form-control" placeholder="Tell us about yourselves."></textarea>
-			<div class="row">
-			<input type="button" value="Cancel" class="hide btn-secondary cancel-btn" id="delete"/> 
-			<button class="btn btn-primary submit-btn">Submit</button>
-			</div>
-		</div>
-	</div>
-
-
-	</form>
 	
 	<div id="chat-icon">
 		<img src="images/chat-4-128.png" id="chatIcon" alt="Chat Icon" width="50" height="50" />
 		<i class="fa fa-comment"></i>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>
-			$('#chat-icon').click(function() {
-				$('#popup-form-modal').fadeIn();
-			});
-			$("#delete").on("click",function(){
-       			 $("#popup-form-modal").fadeOut();
-    			});
-	
-	</script>
+
+<script>
+document.getElementById("chat-icon").addEventListener("click", function() {
+
+  var url = "https://share.hsforms.com/1rFYN-cQ0Sl24Kg_9e4S8PQd5xe8";
+  var width = 800;
+  var height = 600;
+  var left = (window.innerWidth - width) / 2;
+  var top = (window.innerHeight - height) / 2;
+
+  var popupWindow = window.open(url, "_blank", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
+});
+</script>
+
 	<div id="wrapper">
         <header>
 			<section class="top-nav">
@@ -1319,89 +1256,8 @@
 		})
 	</script>
 
-	<script>  class Popup {
-			classPopupShow = 'popup--show';
-			classForBody = 'popup-active';
-			popup = null;
-			closeOnClickOverlay = false;
 
-			constructor(options = {}) {
 
-				if (options.closeOnClickOverlay) {
-					this.closeOnClickOverlay = true;
-				}
-
-				// check if page has vertical scroll
-				this.scrollWidthInit();
-
-				document.addEventListener('click', e => {
-
-					// open
-					if (e.target.dataset.popupOpen) {
-						e.preventDefault();
-						this.popup = document.getElementById(e.target.dataset.popupOpen);
-						this.show();
-					}
-
-					// close
-					if (e.target.hasAttribute('data-popup-close') ||
-						(e.target.closest('.popup__close') && e.target.closest('.popup__close').hasAttribute('data-popup-close')) ||
-						(this.closeOnClickOverlay && e.target.classList.contains('popup__content'))
-					) {
-						e.preventDefault();
-						this.hide();
-					}
-				})
-			}
-
-			scrollWidthInit() {
-
-				function existVerticalScroll() {
-					let vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0),
-						sh = document.body.scrollHeight;
-
-					return sh > vh ? true : false;
-				}
-
-				let div = document.createElement('div');
-
-				div.style.overflowY = 'scroll';
-				div.style.width = '50px';
-				div.style.height = '50px';
-
-				document.body.append(div);
-
-				let scrollWidth = div.offsetWidth - div.clientWidth;
-
-				div.remove();
-
-				if (existVerticalScroll()) {
-					document.documentElement.style.setProperty('--scroll-width', scrollWidth + 'px');
-				}
-			}
-
-			show() {
-
-				if (this.popup) {
-					this.popup.classList.add(this.classPopupShow);
-				}
-
-				document.body.classList.add(this.classForBody);
-			}
-
-			hide() {
-
-				if (this.popup) {
-					this.popup.classList.remove(this.classPopupShow);
-				}
-
-				document.body.classList.remove(this.classForBody);
-			}
-		}
-
-		new Popup({
-			closeOnClickOverlay: true, // if you want popup to be closed after click on overlay (default: false)
-		});</script>
 
 	<script>
 		$(".single-acco h2").click(function () {
