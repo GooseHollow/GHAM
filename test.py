@@ -146,10 +146,10 @@ with open("assets/js/etf1_dygraph2.js", 'w') as f2:
     with open("assets/old_cache.txt", 'r') as data_file:
         for line in data_file:
             date, nav, price=line.replace("\t",",").strip("\n|\r").split(",")
-		    try:
-			    price=float(price)
-		    except Exception as e:
-			    print("unable to convert price to float")
+            try:
+                price=float(price)
+            except Exception as e:
+                print("unable to convert price to float")
             if isinstance(price, (int, float, complex)):
                 prem_dis = (float(nav)/float(price)) - 1
             else: 
