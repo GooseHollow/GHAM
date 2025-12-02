@@ -40,7 +40,7 @@ r_content = json.loads(response.content.decode('utf-8'))
 if r_content['response']['status_description'] != 'Success':
     pass
 
-date_of_info = list(r_content['data'].keys())[0]
+date_of_info = list(r_content['data'].keys())[1]
 fund_info = r_content['data'][date_of_info][1]
 asofdate = fund_info['as_of_date']
 
