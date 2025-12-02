@@ -42,7 +42,7 @@ if r_content['response']['status_description'] != 'Success':
 
 #date_of_info = list(r_content['data'].keys())[0]
 date_of_info = max(r_content['data'].keys())
-fund_info = r_content['data'][date_of_info][1]
+fund_info = r_content['data'][date_of_info][0]
 asofdate = fund_info['as_of_date']
 
 fund_history = {}
