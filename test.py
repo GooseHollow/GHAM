@@ -3,6 +3,7 @@ import requests
 from requests.auth import HTTPDigestAuth
 import json
 import os
+import sys
 
 js_loop = "for( i=0 ;i< document.getElementsByClassName('{0}').length;i++) {{ document.getElementsByClassName('{0}')[i].innerHTML = '{1}'; }}\n"
 
@@ -50,6 +51,12 @@ with open("assets/old_cache.txt", 'r') as f:
     for line in f:
         vals = line.strip("\n|\r").split("\t")
         fund_history[vals[0]] = (vals[1], vals[2])
+
+# Skip update if the API date is not newer than what we already have
+latest_cached_date = max(fund_history.keys())
+if asofdate <= latest_cached_date:
+    print("NO_UPDATE: API as_of_date ({}) is not newer than cached date ({}). Skipping.".format(asofdate, latest_cached_date))
+    sys.exit(0)
 
 fund_history_dts = list(fund_history.keys())
 if asofdate in fund_history_dts:
