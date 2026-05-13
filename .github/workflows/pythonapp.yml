@@ -7,15 +7,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: checkout repo content
-        uses: actions/checkout@main # checkout the repository content to github runner.
-        
+        uses: actions/checkout@v4 # checkout the repository content to github runner.
+
       - name: setup python
-        uses: actions/setup-python@main
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8 #install the python needed
+          python-version: '3.12' #install the python needed
           
       - name: install packages
         run: |
@@ -34,7 +36,7 @@ jobs:
           git config --local user.email "actions@github.com"
           git add assets/js/*
           git add assets/old_cache.txt
-          git pull
+          git pull --rebase origin main
           git status
           if git diff --cached --quiet; then
             echo "No new data from API, skipping commit."
