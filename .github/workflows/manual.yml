@@ -36,9 +36,9 @@ jobs:
         run: |
           git config --local user.name actions-user
           git config --local user.email "actions@github.com"
+          git pull --rebase --autostash origin main
           git add assets/js/*
           git add assets/old_cache.txt
-          git pull --rebase origin main
           git status
           if git diff --cached --quiet; then
             echo "No new data from API, skipping commit."
