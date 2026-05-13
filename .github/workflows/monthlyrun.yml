@@ -7,15 +7,17 @@ on:
 jobs:
   update-financial-returns:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repo content
-        uses: actions/checkout@main
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@main
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install required packages
         run: |
@@ -31,7 +33,7 @@ jobs:
           git config --local user.name actions-user
           git config --local user.email "actions@github.com"
           git add index.html
-          git pull
+          git pull --rebase origin main
           git status
           git diff --cached --exit-code || git commit -m "GH ACTION Monthly Financial Returns Update $(date)"
           git push origin main
