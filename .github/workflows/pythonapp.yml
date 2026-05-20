@@ -2,7 +2,7 @@ name: pythonapp
 
 on:
   schedule:
-    - cron: '15 8 * * 1-5' #run at 8:30 EST every weekday
+    - cron: '15 9 * * 1-5' #run at 8:30 EST every weekday
 
 jobs:
   build:
