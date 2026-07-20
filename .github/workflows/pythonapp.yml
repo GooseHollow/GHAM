@@ -1,8 +1,12 @@
 name: pythonapp
 
+# DISABLED 2026-07-20: replaced by devbox cron (~/gham-cron/update_headlines.sh,
+# 08:37 ET weekdays). Re-enable by uncommenting the schedule below.
+# Manual runs still available via workflow_dispatch (see manual.yml).
 on:
-  schedule:
-    - cron: '37 12 * * 1-5' #run at 8:30 EST every weekday
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '37 12 * * 1-5' #run at 8:30 EST every weekday
 
 jobs:
   build:
