@@ -36,22 +36,19 @@ def period_end_of_file(path):
     return None
 
 
-def find_latest_excel(directory=EXCEL_DIR, period_end_fn=period_end_of_file):
-    """Return the workbook in `directory` covering the most recent period.
+def find_latest_excel(directory=EXCEL_DIR):
+    """Return the most recently added workbook in `directory`.
 
-    Filenames are unreliable (e.g. finreturns_july2026.xls holds July 31 data while
-    finreturns.xls holds August 31 data), so files are ranked by the 'Period Ending'
-    date inside them, with file mtime as the tie-breaker.
+    Ranked by file modification time, not by name -- filenames are unreliable
+    here (finreturns_july2026.xls holds July 31 data while finreturns.xls holds
+    August 31 data). Note a fresh clone resets mtimes, so run this against a
+    working copy where the files were actually dropped in.
     """
     candidates = sorted(glob.glob(os.path.join(directory, "*.xls")) +
                         glob.glob(os.path.join(directory, "*.xlsx")))
     if not candidates:
         raise FileNotFoundError(f"No Excel files found in {directory}")
-
-    def sort_key(path):
-        return (period_end_fn(path) or date.min, os.path.getmtime(path))
-
-    return max(candidates, key=sort_key)
+    return max(candidates, key=os.path.getmtime)
 
 
 def main(excel_path=None, html_path=HTML_FILE):
