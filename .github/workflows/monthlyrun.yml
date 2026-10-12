@@ -26,7 +26,7 @@ jobs:
 
       - name: Run financial returns update script
         run: |
-          python ./ghta_excel_to_html.py
+          python ./assets/python/ghta_excel_to_html.py
 
       - name: Commit and push changes
         run: |

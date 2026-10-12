@@ -7,8 +7,10 @@ from datetime import date
 import pandas as pd
 from bs4 import BeautifulSoup
 
-EXCEL_DIR = "assets/excel"
-HTML_FILE = "index.html"
+# Resolve paths from this file's location so the script runs from any cwd.
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+EXCEL_DIR = os.path.join(REPO_ROOT, "assets", "excel")
+HTML_FILE = os.path.join(REPO_ROOT, "index.html")
 
 MONTHS = {"January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
           "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12}

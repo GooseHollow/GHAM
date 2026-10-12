@@ -1,3 +1,6 @@
 # local secrets / cron config — never commit
 .env
 gham-cron/
+
+# local test suite
+tests/
